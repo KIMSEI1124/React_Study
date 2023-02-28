@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Example() {
+function Register04() {
   const [form, setForm] = useState({ id: '', pw: '', email: '', tel: '' });
   const { id, pw, email, tel } = form;
   const onChange = (e) => {
@@ -61,4 +61,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default Register04;
