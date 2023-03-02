@@ -1,22 +1,6 @@
 import React, { Component } from 'react';
 
-class Register05 extends Component {
-  state = {
-    id: '',
-    pw: '',
-    social0: '',
-    social1: '',
-    tel0: '',
-    tel1: '',
-    tel2: '',
-  };
-
-  onChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
+class Register051 extends Component {
   handlerKeyPress = (e) => {
     if (e.key === 'Enter') {
       if (e.target.name === 'id') {
@@ -37,21 +21,17 @@ class Register05 extends Component {
     }
   };
 
-  input = React.createRef();
-
   onClick = () => {
     alert(
-      `아이디: ${this.state.id}\n비밀번호: ${this.state.pw}\n주민번호: ${this.state.social0} - ${this.state.social1}\n전화번호: ${this.state.tel0} - ${this.state.tel1} - ${this.state.tel2}`,
+      `아이디: ${this.input_id.value}\n비밀번호: ${this.input_pw.value}\n주민번호: ${this.input_social0.value} - ${this.input_social1.value}\n전화번호: ${this.input_tel0.value} - ${this.input_tel1.value} - ${this.input_tel2.value}`,
     );
-    this.setState({
-      id: '',
-      pw: '',
-      social0: '',
-      social1: '',
-      tel0: '',
-      tel1: '',
-      tel2: '',
-    });
+    this.input_id.value = '';
+    this.input_pw.value = '';
+    this.input_social0.value = '';
+    this.input_social1.value = '';
+    this.input_tel0.value = '';
+    this.input_tel1.value = '';
+    this.input_tel2.value = '';
   };
 
   render() {
@@ -68,7 +48,6 @@ class Register05 extends Component {
                 type="text"
                 name="id"
                 placeholder="아이디"
-                value={this.state.id}
                 onChange={this.onChange}
                 onKeyDown={this.handlerKeyPress}
                 ref={(ref) => {
@@ -84,7 +63,6 @@ class Register05 extends Component {
                 type="password"
                 name="pw"
                 placeholder="비밀번호"
-                value={this.state.pw}
                 onChange={this.onChange}
                 onKeyDown={this.handlerKeyPress}
                 ref={(ref) => {
@@ -101,7 +79,6 @@ class Register05 extends Component {
                 name="social0"
                 maxLength={6}
                 placeholder="앞자리6자리"
-                value={this.state.social0}
                 onChange={this.onChange}
                 onKeyDown={this.handlerKeyPress}
                 ref={(ref) => {
@@ -114,7 +91,6 @@ class Register05 extends Component {
                 name="social1"
                 maxLength={7}
                 placeholder="뒷자리7자리"
-                value={this.state.social1}
                 onChange={this.onChange}
                 onKeyDown={this.handlerKeyPress}
                 ref={(ref) => {
@@ -131,7 +107,6 @@ class Register05 extends Component {
                 name="tel0"
                 maxLength={3}
                 placeholder="3자리"
-                value={this.state.tel0}
                 onChange={this.onChange}
                 onKeyDown={this.handlerKeyPress}
                 ref={(ref) => {
@@ -144,7 +119,6 @@ class Register05 extends Component {
                 name="tel1"
                 maxLength={4}
                 placeholder="4자리"
-                value={this.state.tel1}
                 onChange={this.onChange}
                 onKeyDown={this.handlerKeyPress}
                 ref={(ref) => {
@@ -157,7 +131,6 @@ class Register05 extends Component {
                 name="tel2"
                 maxLength={4}
                 placeholder="4자리"
-                value={this.state.tel2}
                 onChange={this.onChange}
                 onKeyDown={this.handlerKeyPress}
                 ref={(ref) => {
@@ -186,4 +159,4 @@ class Register05 extends Component {
   }
 }
 
-export default Register05;
+export default Register051;
