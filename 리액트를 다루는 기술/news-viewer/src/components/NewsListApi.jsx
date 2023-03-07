@@ -60,3 +60,4 @@ const NewsListApi = ({ category }) => {
 };
 
 export default NewsListApi;
+
