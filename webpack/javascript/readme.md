@@ -8,6 +8,7 @@ npm run dev
 ## 의존성 설치
 
 ```sh
+npm install react react-dom
 npm install --save-dev webpack webpack-cli webpack-dev-server babel-loader @babel/preset-env @babel/preset-react html-webpack-plugin html-loader
 ```
 
