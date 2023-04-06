@@ -9,7 +9,7 @@ npm run dev
 
 ```sh
 npm install react react-dom
-npm install -D @types/react @types/react-dom typescript ts-loader webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript html-webpack-plugin clean-webpack-plugin
+npm install -D @types/react @types/react-dom typescript esbuild-loader webpack webpack-cli webpack-dev-server html-webpack-plugin clean-webpack-plugin
 npx tsc --init
 ```
 
@@ -20,9 +20,9 @@ npx tsc --init
   "name": "tsx",
   "version": "1.0.0",
   "description": "",
-  "main": ".prettierrc.js",
+  "main": "src/index.tsx",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -34,15 +34,12 @@ npx tsc --init
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
-    "@babel/preset-env": "^7.21.4",
-    "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "^7.21.4",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
+    "esbuild-loader": "^3.0.1",
     "html-webpack-plugin": "^5.5.0",
-    "ts-loader": "^9.4.2",
     "typescript": "^5.0.3",
     "webpack": "^5.78.0",
     "webpack-cli": "^5.0.1",
@@ -83,7 +80,7 @@ module.exports = {
     clean: true,
   },
   devServer: {
-    static: path.resolve(__dirname, '../public'),
+    static: path.resolve(__dirname, './public'),
     port: 3000,
   },
   resolve: {
@@ -93,7 +90,13 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['babel-loader', 'ts-loader'],
+        use: {
+          loader: 'esbuild-loader',
+          options: {
+            loader: 'tsx',
+            target: 'es2015',
+          },
+        },
       },
     ],
   },
@@ -102,7 +105,7 @@ module.exports = {
       React: 'react',
     }),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: 'public/index.html',
     }),
     new CleanWebpackPlugin(),
   ],
