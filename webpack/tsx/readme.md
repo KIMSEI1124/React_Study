@@ -41,6 +41,7 @@ npx tsc --init
     "@types/react-dom": "^18.0.11",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
+    "fork-ts-checker-webpack-plugin": "^8.0.0",
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.3",
@@ -68,10 +69,9 @@ module.exports = {
 ```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const path = require('path');
-
-const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -98,12 +98,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      React: 'react',
-    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
+    new ForkTsCheckerWebpackPlugin(),
     new CleanWebpackPlugin(),
   ],
 };
