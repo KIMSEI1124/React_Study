@@ -1,5 +1,5 @@
-import { WebpackSVG } from '../../assets/svg';
-import { ReactImage } from '../../assets/image';
+import { WebpackSVG } from 'assets/svg';
+import { ReactImage } from 'assets/image';
 
 import * as S from './index.styled';
 
