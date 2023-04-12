@@ -1,4 +1,4 @@
-import { Hello } from '../../components/Animation';
+import { Hello } from 'components/Animation';
 
 import * as S from './index.styled';
 
