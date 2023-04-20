@@ -1,8 +1,11 @@
+const { DefinePlugin } = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const path = require('path');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
   mode: 'development',
@@ -47,6 +50,7 @@ module.exports = {
       pages: path.resolve(__dirname, './src/pages'),
       styles: path.resolve(__dirname, './src/styles'),
       types: path.resolve(__dirname, './src/types'),
+      apis: path.resolve(__dirname, './src/apis'),
     },
   },
   plugins: [
@@ -54,6 +58,9 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
+    }),
+    new DefinePlugin({
+      'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL),
     }),
   ],
 };
